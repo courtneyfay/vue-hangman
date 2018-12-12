@@ -1,14 +1,16 @@
 <template>
   <div>
-    <h1>Key</h1>
+    <h1>{{ letter }}</h1>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      quote: 'I want to be single'
+  props: {
+    letter: {
+      type: String,
+      required: true,
+      default: 'a'
     }
   }
 }
@@ -17,5 +19,7 @@ export default {
 <style scoped>
 h1 {
   background-color: gray;
+  display: inline;
+  color: white;
 }
 </style>
