@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>{{ letter }}</h1>
+    <h1 @click="emitLetter(letter)">{{ letter }}</h1>
   </div>
 </template>
 
@@ -10,7 +10,13 @@ export default {
     letter: {
       type: String,
       required: true,
-      default: 'a'
+      default: 'A'
+    }
+  },
+  methods: {
+    emitLetter(letter) {
+      console.log(letter)
+      this.$emit('keyclick', letter)
     }
   }
 }
