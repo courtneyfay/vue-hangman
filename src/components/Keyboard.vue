@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div v-for="(rows, index) in keyboardRows" class="keyboard-row" :key="rows[index]">
+    <div v-for="(rows, index) in keyboardRows" class="keyboard" :key="rows[index]">
       <Key
         @select-letter="animateKey"
         v-for="letter in rows"
         :letter="letter"
         :key="letter"
-        class="keys"
+        class="keyboard-row"
       />
     </div>
   </div>
@@ -31,23 +31,18 @@ export default {
   },
   created() {
     window.addEventListener('keyup', e => {
-      this.animateKey(e.key)
+      console.log(e.key)
     })
-  },
-  methods: {
-    animateKey(letter) {
-      console.log('Keyboard', letter)
-    }
   }
 }
 </script>
 
 <style scoped>
-.keyboard-row {
+.keyboard {
   background-color: black;
   display: block;
 }
-.keys {
+.keyboard-row {
   display: inline;
   padding-right: 5px;
 }
