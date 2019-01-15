@@ -15,8 +15,7 @@ export default {
   },
   methods: {
     emitLetter(letter) {
-      console.log(letter)
-      this.$emit('keyclick', letter)
+      this.$emit('select-letter', letter)
     }
   }
 }

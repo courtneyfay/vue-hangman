@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div v-for="rows in keyboardRows" class="keyboard-row" :key="rows">
+    <div v-for="(rows, index) in keyboardRows" class="keyboard-row" :key="rows[index]">
       <Key
-        @keyclick="animateKey"
+        @select-letter="animateKey"
         v-for="letter in rows"
         :letter="letter"
         :key="letter"
@@ -28,6 +28,11 @@ export default {
         ['Z', 'X', 'C', 'V', 'B', 'N', 'M']
       ]
     }
+  },
+  created() {
+    window.addEventListener('keyup', e => {
+      this.animateKey(e.key)
+    })
   },
   methods: {
     animateKey(letter) {
