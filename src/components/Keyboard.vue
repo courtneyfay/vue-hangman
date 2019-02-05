@@ -4,6 +4,7 @@
       <Key
         @select-letter="animateKey(letter)"
         v-for="letter in rows"
+        @select-key="emitKey"
         :letter="letter"
         :key="letter"
         :isGrowing="isGrowing"
@@ -32,10 +33,8 @@ export default {
     }
   },
   methods: {
-    animateKey(letter) {
-      console.log('animateKey event', letter)
-      this.isGrowing = true
-      return
+    emitKey(letter) {
+      this.$emit('select-key', letter)
     }
   }
 }

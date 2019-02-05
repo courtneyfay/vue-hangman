@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1
-      @click="animateClick"
+    <div
+      @click="animateClick(letter)"
       :class="[growing ? 'grow' : 'key', 'key', `${letter}`]"
       :key="letter"
-    >{{ letter }}</h1>
+    >{{ letter }}</div>
   </div>
 </template>
 
@@ -29,14 +29,13 @@ export default {
       const key = document.querySelector(`.${letter}`)
 
       key.classList.add('grow')
+
+      this.$emit('select-key', letter)
     })
   },
   methods: {
-    animateClick() {
-      this.growing = true
-    },
-    animateKeypress() {
-      this.growing = true
+    animateClick(letter) {
+      this.$emit('select-key', letter)
     }
   }
 }
@@ -47,6 +46,12 @@ export default {
   background-color: gray;
   display: inline;
   color: white;
+  font-size: 2em;
+  font-weight: bold;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
 }
 .grow {
   opacity: 0.5;

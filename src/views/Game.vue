@@ -2,8 +2,8 @@
   <div class="game">
     <Header/>
     <WordToGuess/>
-    <Guesses/>
-    <Keyboard/>
+    <Guesses :guesses="guesses"/>
+    <Keyboard @select-key="addToGuesses"/>
     <Footer/>
   </div>
 </template>
@@ -18,12 +18,22 @@ import WordToGuess from '@/components/WordToGuess.vue'
 
 export default {
   name: 'game',
+  data() {
+    return {
+      guesses: []
+    }
+  },
   components: {
     Footer,
     Guesses,
     Header,
     Keyboard,
     WordToGuess
+  },
+  methods: {
+    addToGuesses(letter) {
+      this.guesses.push(letter)
+    }
   }
 }
 </script>
