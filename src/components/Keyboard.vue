@@ -2,10 +2,11 @@
   <div>
     <div v-for="(rows, index) in keyboardRows" class="keyboard" :key="rows[index]">
       <Key
-        @select-letter="animateKey"
+        @select-letter="animateKey(letter)"
         v-for="letter in rows"
         :letter="letter"
         :key="letter"
+        :isGrowing="isGrowing"
         class="keyboard-row"
       />
     </div>
@@ -26,13 +27,16 @@ export default {
         ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
         ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
         ['Z', 'X', 'C', 'V', 'B', 'N', 'M']
-      ]
+      ],
+      isGrowing: false
     }
   },
-  created() {
-    window.addEventListener('keyup', e => {
-      console.log(e.key)
-    })
+  methods: {
+    animateKey(letter) {
+      console.log('animateKey event', letter)
+      this.isGrowing = true
+      return
+    }
   }
 }
 </script>

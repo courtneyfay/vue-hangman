@@ -1,6 +1,10 @@
 <template>
   <div>
-    <h1 @click="animateLetter(letter)" :class="[isGrowing ? 'grow' : 'key', 'key']">{{ letter }}</h1>
+    <h1
+      @click="animateClick"
+      :class="[growing ? 'grow' : 'key', 'key', `${letter}`]"
+      :key="letter"
+    >{{ letter }}</h1>
   </div>
 </template>
 
@@ -14,13 +18,25 @@ export default {
     },
     isGrowing: false
   },
+  data() {
+    return {
+      growing: this.isGrowing
+    }
+  },
+  created() {
+    window.addEventListener('keyup', e => {
+      const letter = e.key.toUpperCase()
+      const key = document.querySelector(`.${letter}`)
+
+      key.classList.add('grow')
+    })
+  },
   methods: {
-    emitLetter(letter) {
-      this.$emit('select-letter', letter)
+    animateClick() {
+      this.growing = true
     },
-    animateLetter(letter) {
-      console.log('Keyboard', letter)
-      this.isGrowing = true
+    animateKeypress() {
+      this.growing = true
     }
   }
 }
@@ -33,9 +49,7 @@ export default {
   color: white;
 }
 .grow {
-  background-color: pink;
-  /* transition: all 0.2s ease-in-out;
-  transform: scale(1.1); */
+  opacity: 0.5;
 }
 .shrink {
   background-color: white;
