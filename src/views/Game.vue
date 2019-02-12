@@ -32,7 +32,11 @@ export default {
   },
   methods: {
     addToGuesses(letter) {
-      this.guesses.push(letter)
+      const indexOf = this.guesses.indexOf(letter)
+
+      if (indexOf === -1) {
+        this.guesses.push(letter)
+      }
     }
   }
 }

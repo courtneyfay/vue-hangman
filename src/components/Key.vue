@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      @click="animateClick(letter)"
+      @click="animateKey(letter)"
       :class="[growing ? 'grow' : 'key', 'key', `${letter}`]"
       :key="letter"
     >{{ letter }}</div>
@@ -30,11 +30,11 @@ export default {
 
       key.classList.add('grow')
 
-      this.$emit('select-key', letter)
+      this.animateKey(letter)
     })
   },
   methods: {
-    animateClick(letter) {
+    animateKey(letter) {
       this.$emit('select-key', letter)
     }
   }

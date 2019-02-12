@@ -9,7 +9,7 @@
 <script>
 export default {
   props: {
-    guesses: {} //add type check
+    guesses: {}
   }
 }
 </script>
