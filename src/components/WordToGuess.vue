@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Word To Guess</h1>
+    <div class="word-to-guess">{{ wordToGuess }}</div>
   </div>
 </template>
 
@@ -8,14 +8,16 @@
 export default {
   data() {
     return {
-      quote: 'I want to be single'
+      wordToGuess: '_ _ _ _ _'
     }
   }
 }
 </script>
 
 <style scoped>
-h1 {
-  background-color: turquoise;
+.word-to-guess {
+  color: turquoise;
+  font-size: 4em;
+  font-weight: bold;
 }
 </style>
