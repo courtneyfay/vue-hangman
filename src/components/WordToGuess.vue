@@ -1,14 +1,16 @@
 <template>
-  <div>
-    <div class="word-to-guess">{{ wordToGuess }}</div>
-  </div>
+  <section class="word-to-guess">
+    <div v-for="(character, index) in wordToGuess" :key="index">
+      <div class="character">{{ character }}</div>
+    </div>
+  </section>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      wordToGuess: '_ _ _ _ _'
+      wordToGuess: this.$store.state.wordToGuess
     }
   }
 }
@@ -16,8 +18,14 @@ export default {
 
 <style scoped>
 .word-to-guess {
+  display: flex;
+  justify-content: center;
+}
+
+.character {
   color: turquoise;
   font-size: 4em;
   font-weight: bold;
+  margin: 0 6px;
 }
 </style>
