@@ -2,7 +2,6 @@
   <div id="app">
     <div id="nav">
       <!-- TODO: move header of game to app -->
-      <router-link to="/">New Game</router-link>|
       <router-link to="/play">Game</router-link>|
       <router-link to="/game-over">Game Over</router-link>
     </div>

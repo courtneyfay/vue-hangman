@@ -8,8 +8,10 @@
 
 <script>
 export default {
-  props: {
-    guesses: {}
+  data() {
+    return {
+      guesses: this.$store.state.guesses
+    }
   }
 }
 </script>

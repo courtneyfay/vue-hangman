@@ -2,7 +2,7 @@
   <div class="game">
     <Header/>
     <WordToGuess/>
-    <Guesses :guesses="guesses"/>
+    <Guesses/>
     <Keyboard @select-key="addToGuesses"/>
     <Footer/>
   </div>
@@ -30,12 +30,17 @@ export default {
     Keyboard,
     WordToGuess
   },
+  beforeMount() {
+    this.$store.dispatch('startNewGame')
+  },
   methods: {
     addToGuesses(letter) {
       const indexOf = this.guesses.indexOf(letter)
 
       if (indexOf === -1) {
         this.guesses.push(letter)
+        this.$store.dispatch('postGuess', letter)
+        //call API here instead
       }
     }
   }

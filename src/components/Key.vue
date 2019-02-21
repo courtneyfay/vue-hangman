@@ -28,7 +28,9 @@ export default {
       const letter = e.key.toUpperCase()
       const key = document.querySelector(`.${letter}`)
 
-      key.classList.add('grow')
+      if (key) {
+        key.classList.add('grow')
+      }
 
       this.animateKey(letter)
     })

@@ -8,9 +8,9 @@
 
 <script>
 export default {
-  data() {
-    return {
-      wordToGuess: this.$store.state.wordToGuess
+  computed: {
+    wordToGuess() {
+      return this.$store.getters.getWordToGuess
     }
   }
 }
