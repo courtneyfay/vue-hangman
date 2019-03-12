@@ -1,8 +1,8 @@
 <template>
   <div class="game">
     <Header/>
-    <WordToGuess/>
-    <Guesses/>
+    <WordToGuess class="pull-left"/>
+    <Guesses class="pull-right"/>
     <Keyboard @select-key="addToGuesses"/>
     <Footer/>
   </div>
@@ -40,9 +40,25 @@ export default {
       if (indexOf === -1) {
         this.guesses.push(letter)
         this.$store.dispatch('postGuess', letter)
-        //call API here instead
       }
     }
   }
 }
 </script>
+
+<style lang="scss">
+.game {
+  .pull-left {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 49%;
+  }
+  .pull-right {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 49%;
+  }
+}
+</style>

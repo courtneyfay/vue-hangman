@@ -14,7 +14,8 @@ export default new Vuex.Store({
     gameStatus: ''
   },
   getters: {
-    getWordToGuess: state => state.wordToGuess
+    getWordToGuess: state => state.wordToGuess,
+    getGuesses: state => state.guesses
   },
   mutations: {
     updateWordToGuess(state, word) {
@@ -43,11 +44,15 @@ export default new Vuex.Store({
         .then(response => {
           const guesses = response.data.new_state.guesses
           const wordToGuess = response.data.new_state.word_so_far
+          const actualWord = response.data.new_state.actual_word
 
-          console.log('response', response.data)
-
+          console.log('guesses', guesses)
           commit('updateWordToGuess', wordToGuess)
           commit('updateGuesses', guesses)
+
+          if (actualWord) {
+            commit('updateWordToGuess', actualWord)
+          }
         })
         .catch(err => {
           console.error(err)

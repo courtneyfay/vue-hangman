@@ -1,16 +1,20 @@
 <template>
   <div>
-    <div v-for="guess in guesses" :key="guess" class="guesses">
-      <div class="guess">{{ guess }}</div>
-    </div>
+    <div class="guess">Guesses Left: {{ guessesLeft }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      guesses: this.$store.state.guesses
+  computed: {
+    guesses() {
+      return this.$store.getters.getGuesses
+    },
+    wordToGuess() {
+      return this.$store.getters.getWordToGuess
+    },
+    guessesLeft() {
+      return this.wordToGuess.length - this.guesses.length
     }
   }
 }
