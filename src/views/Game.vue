@@ -51,15 +51,15 @@ export default {
     display: inline-flex;
     flex-direction: row;
     justify-content: flex-start;
-    padding-left: 10%;
-    width: 40%;
+    padding-left: 5%;
+    width: 30%;
   }
   .pull-right {
     display: inline-flex;
     flex-direction: row;
     justify-content: flex-end;
-    padding-right: 10%;
-    width: 40%;
+    padding-right: 5%;
+    width: 55%;
   }
 }
 </style>

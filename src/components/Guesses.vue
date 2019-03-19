@@ -1,5 +1,9 @@
 <template>
   <div>
+    <div class="diagram">
+      <img src="../assets/man.png" class="man">
+      <div class="ocean"></div>
+    </div>
     <div class="guess">Guesses Left: {{ guessesLeft }}</div>
   </div>
 </template>
@@ -34,5 +38,22 @@ export default {
   margin-block-end: 0.67em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+}
+
+.diagram {
+  display: block;
+}
+
+.ocean {
+  background-color: #40e0d0;
+  opacity: 0.7;
+  display: block;
+  height: 200px;
+  width: 500px;
+}
+
+.man {
+  height: 200px;
+  width: 100px;
 }
 </style>
