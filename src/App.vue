@@ -1,13 +1,26 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <!-- TODO: move header of game to app -->
-      <router-link to="/play">Game</router-link>|
-      <router-link to="/game-over">Game Over</router-link>
-    </div>
-    <router-view/>
+    <game v-if="getGameStatus"/>
+    <game-over v-else/>
   </div>
 </template>
+
+<script>
+import Game from './views/Game'
+import GameOver from './views/GameOver'
+
+export default {
+  components: {
+    Game,
+    GameOver
+  },
+  computed: {
+    getGameStatus() {
+      return this.$store.getters.getGameStatus
+    }
+  }
+}
+</script>
 
 <style lang="scss">
 #app {

@@ -9,7 +9,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import Footer from '@/components/Footer.vue'
 import Guesses from '@/components/Guesses.vue'
 import Header from '@/components/Header.vue'
@@ -52,13 +51,15 @@ export default {
     display: inline-flex;
     flex-direction: row;
     justify-content: flex-start;
-    width: 49%;
+    padding-left: 10%;
+    width: 40%;
   }
   .pull-right {
     display: inline-flex;
     flex-direction: row;
     justify-content: flex-end;
-    width: 49%;
+    padding-right: 10%;
+    width: 40%;
   }
 }
 </style>

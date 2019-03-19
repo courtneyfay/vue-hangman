@@ -9,34 +9,27 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    wordToGuess: [],
+    gameStatus: true,
     guesses: [],
-    gameStatus: ''
+    wordToGuess: []
   },
   getters: {
+    getGuesses: state => state.guesses,
     getWordToGuess: state => state.wordToGuess,
-    getGuesses: state => state.guesses
+    getGameStatus: state => state.gameStatus
   },
   mutations: {
-    updateWordToGuess(state, word) {
-      state.wordToGuess = word
+    updateGameStatus(state, status) {
+      state.gameStatus = status
     },
     updateGuesses(state, guesses) {
       state.guesses = guesses
     },
-    updateGameStatus(state, status) {
-      state.gameStatus = status
+    updateWordToGuess(state, word) {
+      state.wordToGuess = word
     }
   },
   actions: {
-    startNewGame({ commit }) {
-      const url = `${baseUrl}/new_game`
-      axios.get(url).then(response => {
-        const wordToGuess = response.data.new_state.word_so_far
-
-        commit('updateWordToGuess', wordToGuess)
-      })
-    },
     postGuess({ commit }, letter) {
       const url = `${baseUrl}/guess/${letter}`
       axios
@@ -46,17 +39,25 @@ export default new Vuex.Store({
           const wordToGuess = response.data.new_state.word_so_far
           const actualWord = response.data.new_state.actual_word
 
-          console.log('guesses', guesses)
-          commit('updateWordToGuess', wordToGuess)
           commit('updateGuesses', guesses)
+          commit('updateWordToGuess', wordToGuess)
 
           if (actualWord) {
             commit('updateWordToGuess', actualWord)
+            commit('updateGameStatus', false)
           }
         })
         .catch(err => {
           console.error(err)
         })
+    },
+    startNewGame({ commit }) {
+      const url = `${baseUrl}/new_game`
+      axios.get(url).then(response => {
+        const wordToGuess = response.data.new_state.word_so_far
+
+        commit('updateWordToGuess', wordToGuess)
+      })
     }
   }
 })

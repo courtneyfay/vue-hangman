@@ -7,14 +7,15 @@
 <script>
 export default {
   computed: {
-    guesses() {
-      return this.$store.getters.getGuesses
-    },
-    wordToGuess() {
-      return this.$store.getters.getWordToGuess
+    guessesLength() {
+      return this.$store.getters.getGuesses.length
     },
     guessesLeft() {
-      return this.wordToGuess.length - this.guesses.length
+      return 6 - this.guessesLength
+    },
+    isGameOn() {
+      const status = this.guessesLeft !== 0
+      return this.$store.commit('updateGameStatus', status)
     }
   }
 }
