@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="diagram">
-      <img src="../assets/man.png" class="dude">
-      <div class="water" :style="{ 'bottom': setBottom }"></div>
+      <img src="../assets/man.png" class="dude" :style="{ 'bottom': setBottom }">
+      <div class="water"></div>
     </div>
     <div class="guess">Guesses Left: {{ guessesLeft }}</div>
   </div>
@@ -22,7 +22,11 @@ export default {
       return this.$store.commit('updateGameStatus', status)
     },
     setBottom() {
-      return `${200 - 200 * (this.guessesLeft / 6)}px`
+      const drownProportion = this.guessesLeft / 6
+      const startingPosition = -200
+      const pixels = `${startingPosition + 200 * drownProportion}px`
+
+      return pixels
     }
   }
 }
@@ -52,12 +56,12 @@ export default {
   background-color: #40e0d0;
   height: 200px;
   opacity: 0.7;
-  position: relative;
   width: 500px;
 }
 
 .dude {
   height: 200px;
+  position: relative;
   width: 100px;
 }
 </style>
