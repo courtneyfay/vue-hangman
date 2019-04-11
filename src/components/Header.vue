@@ -1,21 +1,12 @@
 <template>
   <div>
-    <h1>Header</h1>
+    <h1 class="elevation-2 deep-orange--text strong">Drownman</h1>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      quote: 'I want to be single'
-    }
-  }
-}
+export default {}
 </script>
 
-<style>
-h1 {
-  background-color: hotpink;
-}
+<style scoped>
 </style>

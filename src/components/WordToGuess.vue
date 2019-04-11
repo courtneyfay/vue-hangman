@@ -1,7 +1,7 @@
 <template>
   <section class="word-to-guess">
     <div v-for="(character, index) in wordToGuess" :key="index">
-      <div class="character">{{ character }}</div>
+      <div class="character teal--text text--lighten-3">{{ character }}</div>
     </div>
   </section>
 </template>
@@ -23,7 +23,6 @@ export default {
 }
 
 .character {
-  color: turquoise;
   font-size: 4em;
   font-weight: bold;
   margin: 0 6px;

@@ -4,7 +4,7 @@
       <img src="../assets/man.png" class="dude" :style="{ 'bottom': setBottom }">
       <div class="water"></div>
     </div>
-    <div class="guess">Guesses Left: {{ guessesLeft }}</div>
+    <div class="guess teal--text text--lighten-3">Guesses Left: {{ guessesLeft }}</div>
   </div>
 </template>
 
@@ -38,7 +38,6 @@ export default {
 }
 
 .guess {
-  color: lightskyblue;
   font-size: 2em;
   font-weight: bold;
   margin-block-start: 0.67em;

@@ -52,12 +52,9 @@ export default {
   background-color: gray;
   display: inline;
   color: white;
-  font-size: 2em;
+  font-size: 3em;
   font-weight: bold;
-  margin-block-start: 0.67em;
-  margin-block-end: 0.67em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  padding: 0 5px;
 }
 .grow {
   opacity: 0.5;

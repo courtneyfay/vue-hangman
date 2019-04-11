@@ -1,21 +1,12 @@
 <template>
   <div>
-    <h1>Footer</h1>
+    <h1 class="purple--text text--lighten-2 strong">&copy; Courtney Fay</h1>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      quote: 'I want to be single'
-    }
-  }
-}
+export default {}
 </script>
 
 <style scoped>
-h1 {
-  background-color: yellow;
-}
 </style>

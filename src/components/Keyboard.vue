@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="(rows, index) in keyboardRows" class="keyboard" :key="rows[index]">
+    <div v-for="(rows, index) in keyboardRows" class="black keyboard" :key="rows[index]">
       <Key
         @select-letter="animateKey(letter)"
         v-for="letter in rows"
@@ -8,7 +8,7 @@
         :letter="letter"
         :key="letter"
         :isGrowing="isGrowing"
-        class="keyboard-row"
+        class="keyboard-row pr-2"
       />
     </div>
   </div>
@@ -41,12 +41,7 @@ export default {
 </script>
 
 <style scoped>
-.keyboard {
-  background-color: black;
-  display: block;
-}
 .keyboard-row {
   display: inline;
-  padding-right: 5px;
 }
 </style>
